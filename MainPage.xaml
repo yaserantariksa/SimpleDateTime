@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:local="clr-namespace:SimpleDateTime"
+             x:Class="SimpleDateTime.MainPage"
+             Title="One-Shot DateTime Page">
+    
+    <ContentPage.BindingContext>
+        <local:ClockViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout VerticalOptions="Center" >
+        <Label Text="{Binding DateTime, StringFormat='{0:T}'}" HorizontalOptions="Center"/>
+        <VerticalStackLayout
+            BindingContext="{x:Static sys:DateTime.Now}"
+            Spacing="25" Padding="30"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <Label Text="{Binding StringFormat='Now is {0}'}" />
+            <Label Text="{Binding Year, StringFormat='The year is {0}'}" />
+            <Label Text="{Binding StringFormat='The month is {0:MMMM}'}" />
+            <Label Text="{Binding Day, StringFormat='The day is {0}'}"/>
+            <Label Text="{Binding StringFormat='The time is {0:T}'}"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
